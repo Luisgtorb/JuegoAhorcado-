@@ -29,5 +29,8 @@ function btnNuevaPalabra() {
 }
 
 function btnCancelar() {
-
+    document.getElementById("iniciar").hidden=false;
+    document.getElementById("anexar").hidden=false;
+    document.getElementById("inicio-juego").hidden=false;
+    document.getElementById("input-palabra").hidden=true;
 }
