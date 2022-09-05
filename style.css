@@ -1,0 +1,46 @@
+/* Aquí veremos el footer con la informacion del desarrollador */
+
+.rodapie {
+    text-align: center;
+    background: linear-gradient(#cfcfcf 40%, #888);
+    margin-top: 25px;
+}
+
+.rodapie img {
+    border: 3px solid rgba(2, 2, 61, 0.753);
+    border-radius: 65px;
+    width: 95px;
+    height: 90px;
+    margin: 15px 0;
+    box-shadow: 0px 0px 15px rgba(0, 0, 139, 0.349);
+}
+
+.rodapie h3 {
+    padding-top: 0;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgba(0, 0, 139, 0.918);
+    text-shadow: 0 0 20px rgba(21, 21, 22, 0.795);
+}
+
+.rodapie i {
+    font-size: 35px;
+    margin: 10px 5px;
+    color:darkblue;
+    cursor: pointer;
+
+}
+
+.fa-github:hover {
+    color: black;
+}
+
+.fa-linkedin:hover {
+    color: rgba(0, 0, 139, 0.856);
+}
+
+.rodapie p {
+    padding: 7px 0;
+    color: darkblue;
+}
