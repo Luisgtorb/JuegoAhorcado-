@@ -1,3 +1,63 @@
+body {
+    background: gainsboro;
+}
+
+/* Aquí se trabaja el header */
+
+.logo {
+    margin: 10px;
+}
+
+
+/* Menú principal, inicio y anexo */
+
+#inicio-juego {
+    margin: 100px auto;
+    width: 30%;
+    height: 200px;
+    text-align: center;
+}
+
+.iniciar {
+    width: 80%;
+    height: 50px;
+    color: gainsboro;
+    background: darkblue;
+    font-size: 27px;
+    font-family:'Times New Roman', Times, serif;
+    border-radius: 10px;
+    border: none;
+    margin-top: 15%;
+    cursor: pointer;
+}
+
+.iniciar:hover {
+    box-shadow: 3px 3px 8px black;
+    transition: 400ms;
+    margin-top: 10%;
+    width: 85%;
+}
+
+.anexar {
+    width: 65%;
+    height: 50px;
+    color: darkblue;
+    background: rgba(0, 0, 139, 0.205);
+    font-size: 23px;
+    font-family:'Times New Roman', Times, serif;
+    border-radius: 10px;
+    border: none;
+    margin-top: 5%;
+    cursor: pointer;
+}
+
+.anexar:hover {
+    box-shadow: 2px 2px 5px black;
+    transition: 400ms;
+    margin-top: 8%;
+    width: 70%;
+}
+
 /* Aquí veremos el footer con la informacion del desarrollador */
 
 .rodapie {
