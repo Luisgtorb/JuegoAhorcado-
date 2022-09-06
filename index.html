@@ -30,11 +30,15 @@
         </section>
 
         <section class="seccion-juego">
-            <div class="juego" hidden>
-                <canvas></canvas>
-                <button class="nuevo-juego" id="nuevo-juego" onclick="btnNuevoJuego()">Nuevo Juego</button>
-                <button class="desistir" id="desistir" onclick="btnDesistir()">Desistir</button>
+
+            <div class="juego" id="juego" hidden>
+                <canvas width="700px" height="450px" class="pantalla"></canvas>
+                <div class="opciones">
+                    <button class="nuevo-juego" id="nuevo-juego" onclick="btnNuevoJuego()">Nuevo Juego</button>
+                    <button class="desistir" id="desistir" onclick="btnDesistir()">Desistir</button>
+                </div>
             </div>
+
         </section>
 
         
