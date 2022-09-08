@@ -141,16 +141,30 @@ pincel.lineTo(390,330);
 pincel.lineTo(375,330);
 pincel.stroke();
 
-
-function dibujarPalabra(x) {
+function palabraSecreta() {
+    var secreto = Math.floor(Math.random()*palabras.length);
+    console.log(palabras[secreto].valueOf());
+    console.log(x);
+        // for(let i = 0; i <= palabras.length; i++) {
+        //     let x = secreto[i];
+        //     if(x == i) {
+               
+            
+        //     }
+        // }
+}
     
+function dibujarPalabra(x) {
     pincel.fillStyle = "darkblue";
     pincel.fillRect(x,400,50,5);    
-
 }
 
 for (let x = 160; x<=530; x = x + 80) {
     dibujarPalabra(x);
+}
+
+function btnNuevoJuego() {
+    palabraSecreta();
 }
 
 function btnDesistir() {
@@ -161,10 +175,10 @@ function btnDesistir() {
 // Secccion para agregar nueva palabra
 
 function btnNuevaPalabra() {
-   palabras.push(agregarPalabra.value);
-   agregarPalabra.value = " ";
-   agregarPalabra.focus();
-   console.log(palabras);
+    palabras.push(agregarPalabra.value.toUpperCase());
+    document.getElementById("input-palabra").hidden=true;
+    agregarJuego();
+    console.log(palabras);
 }
 
 function btnCancelar() {
