@@ -1,22 +1,10 @@
 //  Seccion de Variables globales
 
 var palabras = ["PLAYA", "FIESTA", "PISCINA", "VERANO", "CARRO", "YATE", "MUSICA", "AGUA", "VIAJE", "PELOTA"]; 
+var palabraSecreta = "";
 var agregarPalabra = document.querySelector(".textarea");
-var pantalla = document.querySelector("canvas");
+var pantalla = document.getElementById("pantalla");
 var pincel = pantalla.getContext("2d");
-// pincel.fillStyle = "green";
-// pincel.fillRect(0,0,700,450);
-
-// function dibujarCirculo(){
-//     var x = evento.pageX - pantalla.offsetLeft;
-//     var y = evento.pageY - pantalla.offsetTop; 
-//     pincel.fillStyle = "tomato";
-//     pincel.beginPath();
-//     pincel.arc(x,y,10,0,2*3.14);
-//     pincel.fill();      
-// }
-
-// pantalla.onclick = dibujarCirculo;
 
 // Seccion de Requisitos para desarrollar el proyecto
 
@@ -57,6 +45,7 @@ function agregarInicio() {
 function btnIniciar() {
     limpiarBotones();
     agregarJuego();
+    escogerPalabraSecreta();
 }
 
 function btnAnexar() {
@@ -141,30 +130,23 @@ pincel.lineTo(390,330);
 pincel.lineTo(375,330);
 pincel.stroke();
 
-function palabraSecreta() {
-    var secreto = Math.floor(Math.random()*palabras.length);
-    console.log(palabras[secreto].valueOf());
-    console.log(x);
-        // for(let i = 0; i <= palabras.length; i++) {
-        //     let x = secreto[i];
-        //     if(x == i) {
-               
-            
-        //     }
-        // }
-}
-    
-function dibujarPalabra(x) {
-    pincel.fillStyle = "darkblue";
-    pincel.fillRect(x,400,50,5);    
+function escogerPalabraSecreta() {
+    let secreto = palabras[Math.floor(Math.random()*palabras.length)];
+    palabraSecreta = secreto;
+    dibujarGuion();
+    console.log(palabraSecreta);
 }
 
-for (let x = 160; x<=530; x = x + 80) {
-    dibujarPalabra(x);
+function dibujarGuion() {
+    let guion = 500/palabraSecreta;
+    for(let i = 0; i < palabraSecreta.length; i++) {
+        pincel.fillStyle = "darkblue";
+        pincel.fillRect(100 + (guion*i),400,50,5);
+    }
 }
 
 function btnNuevoJuego() {
-    palabraSecreta();
+    escogerPalabraSecreta();
 }
 
 function btnDesistir() {
