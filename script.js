@@ -46,6 +46,8 @@ function btnIniciar() {
     limpiarBotones();
     agregarJuego();
     escogerPalabraSecreta();
+    dibujarCanvas();
+    dibujarGuion();
 }
 
 function btnAnexar() {
@@ -53,100 +55,18 @@ function btnAnexar() {
     agregarNuevaPalabra();
 }
 
-// Seccion para el juego, botonoes y canvas
-
-// base
-pincel.fillStyle = "darkblue";
-pincel.fillRect(175,330,350,10);
-
-// tronco
-pincel.fillStyle = "darkblue";
-pincel.fillRect(275,80,10,250);
-
-// techo
-pincel.fillStyle = "darkblue";
-pincel.fillRect(275,80,130,10);
-
-// cuerda
-pincel.fillStyle = "darkblue";
-pincel.fillRect(405,80,10,65);
-
-// cabeza
-pincel.fillStyle = "darkblue";
-pincel.beginPath();
-pincel.arc(410,179,35,0,3.15*2)
-pincel.fill();
-
-pincel.fillStyle = "gainsboro";
-pincel.beginPath();
-pincel.arc(410,179,28,0,3.15*2)
-pincel.fill();
-
-// Cuerpo
-pincel.fillStyle = "darkblue";
-pincel.fillRect(405,210,10,65);
-
-// brazo izquierdo
-pincel.strokeStyle = "darkblue";
-pincel.lineWidth = "6.5"
-pincel.beginPath();
-pincel.moveTo(413,210);
-pincel.lineTo(450,260);
-pincel.stroke();
-
-pincel.fillStyle = "darkblue";
-pincel.beginPath();
-pincel.arc(450,260,7,0,3.15*2)
-pincel.fill();
-
-// brazo derecho
-pincel.strokeStyle = "darkblue";
-pincel.lineWidth = "6.5"
-pincel.beginPath();
-pincel.moveTo(407,210);
-pincel.lineTo(370,260);
-pincel.stroke();
-
-pincel.fillStyle = "darkblue";
-pincel.beginPath();
-pincel.arc(370,260,7,0,3.15*2)
-pincel.fill();
-
-// Pierna izquierda
-pincel.strokeStyle = "darkblue";
-pincel.lineWidth = "6.5"
-pincel.beginPath();
-pincel.moveTo(413,270);
-pincel.lineTo(430,330);
-pincel.lineTo(445,330);
-pincel.stroke();
-
-// Pierna derecha
-pincel.strokeStyle = "darkblue";
-pincel.lineWidth = "6.5";
-pincel.beginPath();
-pincel.moveTo(407,270);
-pincel.lineTo(390,330);
-pincel.lineTo(375,330);
-pincel.stroke();
+// Seecion del juego
 
 function escogerPalabraSecreta() {
     let secreto = palabras[Math.floor(Math.random()*palabras.length)];
     palabraSecreta = secreto;
-    dibujarGuion();
     console.log(palabraSecreta);
-}
-
-function dibujarGuion() {
-    let guion = 500/palabraSecreta;
-    for(let i = 0; i < palabraSecreta.length; i++) {
-        pincel.fillStyle = "darkblue";
-        pincel.fillRect(100 + (guion*i),400,50,5);
-    }
 }
 
 function btnNuevoJuego() {
     escogerPalabraSecreta();
+    dibujarCanvas();
+    dibujarGuion();
 }
 
 function btnDesistir() {
@@ -159,7 +79,9 @@ function btnDesistir() {
 function btnNuevaPalabra() {
     palabras.push(agregarPalabra.value.toUpperCase());
     document.getElementById("input-palabra").hidden=true;
+    agregarPalabra.value = "";
     agregarJuego();
+    dibujarGuion();
     console.log(palabras);
 }
 

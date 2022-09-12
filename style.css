@@ -68,8 +68,7 @@ body {
 }
 
 canvas {
-    border-radius: 10px;
-    border: 2px solid white;
+    border: 1px solid black;
 }
 
 .opciones {
