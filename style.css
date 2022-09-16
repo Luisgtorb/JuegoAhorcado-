@@ -67,10 +67,6 @@ body {
     height: 530px;
 }
 
-canvas {
-    border: 1px solid black;
-}
-
 .opciones {
     margin: 2% auto;
     width: 70%;
@@ -126,8 +122,15 @@ canvas {
 
 #input-palabra i {
     color: #333;
-    font-size: 14px;
+    font-size: 12px;
+    display: flex;
+}
+
+#input-palabra i p {
+    color: #333;
+    font-size: 12px;
     font-family: 'Times New Roman', Times, serif;
+    margin-left: 5px;
 }
 
 .textarea {
@@ -141,6 +144,7 @@ canvas {
     font-family: 'Times New Roman', Times, serif;
     resize: none;
     margin: 10px 0;
+    text-align: center;
 }
 
 .textarea::placeholder {

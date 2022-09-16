@@ -1,6 +1,6 @@
 //  Seccion de Variables globales
 
-var palabras = ["PLAYA", "FIESTA", "PISCINA", "VERANO", "CARRO", "YATE", "MUSICA", "AGUA", "VIAJE", "PELOTA"]; 
+var palabras = ["PLAYA", "FIESTA", "PISCINA", "VERANO", "CARRO", "YATE", "MUSICA", "AGUA", "VIAJE", "PELOTA"];
 var palabraSecreta = "";
 var agregarPalabra = document.querySelector(".textarea");
 var pantalla = document.getElementById("pantalla");
@@ -47,7 +47,7 @@ function btnIniciar() {
     agregarJuego();
     escogerPalabraSecreta();
     dibujarCanvas();
-    dibujarGuion();
+    dibujarGuion(198);
 }
 
 function btnAnexar() {
@@ -63,10 +63,29 @@ function escogerPalabraSecreta() {
     console.log(palabraSecreta);
 }
 
+function teclado() {
+    document.addEventListener('keydown', (event) => {  
+        var name = event.key;
+        var letra = 400/palabraSecreta.length;
+        for(let i = 0; i < palabraSecreta.length; i++) {
+            if(name.includes(palabraSecreta.charAt(i))){
+                dibujarLetra(198 + 15 + (letra*i),388,palabraSecreta.charAt(i));
+            } 
+        }    
+
+        // if(name != parseInt(name)) {
+        //     console.log("yes");
+        // } else {
+        //     alert("Agregaste un numero");
+        // }
+
+    }, false);
+}
+
 function btnNuevoJuego() {
     escogerPalabraSecreta();
     dibujarCanvas();
-    dibujarGuion();
+    dibujarGuion(198);
 }
 
 function btnDesistir() {

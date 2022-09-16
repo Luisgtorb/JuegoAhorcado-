@@ -7,14 +7,22 @@ function dibujarCanvas() {
     // base
     pincel.fillStyle = "darkblue";
     pincel.fillRect(215,330,350,10);
+    teclado();
 }
 
-function dibujarGuion() {
-    let guion = 500/palabraSecreta.length;
+function dibujarGuion(x) {
+    let guion = 400/palabraSecreta.length;
     for(let i = 0; i < palabraSecreta.length; i++) {
         pincel.fillStyle = "darkblue";
-        pincel.fillRect(150 + (guion*i), 390, 45, 5);
+        pincel.fillRect(x + (guion*i), 390, 45, 5);
     }
+    
+}
+
+function dibujarLetra(x,y,texto) {
+    pincel.fillStyle = "#518169";
+    pincel.font = "20px Times New Roman";
+    pincel.fillText(texto,x,y);   
 }
 
 // // tronco
