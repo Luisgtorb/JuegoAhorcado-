@@ -2,6 +2,8 @@
 
 var palabras = ["PLAYA", "FIESTA", "PISCINA", "VERANO", "CARRO", "YATE", "MUSICA", "AGUA", "VIAJE", "PELOTA"];
 var palabraSecreta = "";
+var caracter = [];
+var errores = 8;
 var agregarPalabra = document.querySelector(".textarea");
 var pantalla = document.getElementById("pantalla");
 var pincel = pantalla.getContext("2d");
@@ -48,6 +50,7 @@ function btnIniciar() {
     escogerPalabraSecreta();
     dibujarCanvas();
     dibujarGuion(198);
+    acierto();
 }
 
 function btnAnexar() {
@@ -63,29 +66,46 @@ function escogerPalabraSecreta() {
     console.log(palabraSecreta);
 }
 
-function teclado() {
-    document.addEventListener('keydown', (event) => {  
-        var name = event.key;
-        var letra = 400/palabraSecreta.length;
-        for(let i = 0; i < palabraSecreta.length; i++) {
-            if(name.includes(palabraSecreta.charAt(i))){
-                dibujarLetra(198 + 15 + (letra*i),388,palabraSecreta.charAt(i));
-            } 
-        }    
+function teclado(key) { 
+        var estado = false;
+        if(key >= 65 && caracter.indexOf(key) || key <= 90 && caracter.indexOf(key)) {
+            caracter.push(key);
+            console.log(key);
+            return estado       
+        } else {
+            estado = true;
+            console.log(key);
+            return estado
+        }
+}
 
-        // if(name != parseInt(name)) {
-        //     console.log("yes");
-        // } else {
-        //     alert("Agregaste un numero");
-        // }
+function acierto() {
+    
+    document.onkeydown = (event) => {
+        var name = event.key.toUpperCase();
+        if(teclado(name) && palabraSecreta.includes(name)) {
+            for(let i = 0; i < palabraSecreta.length; i++) {
+                if(palabraSecreta[i] === name) {
+                    dibujarLetraCorrecta(i);
+                }
+            }
+        } else {
+            dibujarLetraIncorrecta(name,errores);
+            agregarError(name)
+        }
+    }
+}
 
-    }, false);
+function agregarError() {
+    errores -= 1;
+    console.log(errores);
 }
 
 function btnNuevoJuego() {
     escogerPalabraSecreta();
     dibujarCanvas();
     dibujarGuion(198);
+    acierto();
 }
 
 function btnDesistir() {
@@ -100,7 +120,7 @@ function btnNuevaPalabra() {
     document.getElementById("input-palabra").hidden=true;
     agregarPalabra.value = "";
     agregarJuego();
-    dibujarGuion();
+    dibujarGuion(198);
     console.log(palabras);
 }
 

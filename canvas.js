@@ -7,7 +7,6 @@ function dibujarCanvas() {
     // base
     pincel.fillStyle = "darkblue";
     pincel.fillRect(215,330,350,10);
-    teclado();
 }
 
 function dibujarGuion(x) {
@@ -19,10 +18,17 @@ function dibujarGuion(x) {
     
 }
 
-function dibujarLetra(x,y,texto) {
+function dibujarLetraCorrecta(index) {
     pincel.fillStyle = "#518169";
+    pincel.font = "25px Times New Roman";
+    var guion = 400/palabraSecreta.length;
+    pincel.fillText(palabraSecreta[index],198+12+(guion*index),385);  
+}
+
+function dibujarLetraIncorrecta(name, errorsLeft) {
+    pincel.fillStyle = "#ff6f69";
     pincel.font = "20px Times New Roman";
-    pincel.fillText(texto,x,y);   
+    pincel.fillText(name, 200+(20*(10-errorsLeft)),440,20);
 }
 
 // // tronco
