@@ -67,15 +67,13 @@ function escogerPalabraSecreta() {
 }
 
 function teclado(key) { 
-        var estado = false;
         if(key >= 65 && caracter.indexOf(key) || key <= 90 && caracter.indexOf(key)) {
             caracter.push(key);
             console.log(key);
-            return estado       
+            return false       
         } else {
-            estado = true;
             console.log(key);
-            return estado
+            return true
         }
 }
 
@@ -83,21 +81,50 @@ function acierto() {
     
     document.onkeydown = (event) => {
         var name = event.key.toUpperCase();
-        if(teclado(name) && palabraSecreta.includes(name)) {
-            for(let i = 0; i < palabraSecreta.length; i++) {
-                if(palabraSecreta[i] === name) {
-                    dibujarLetraCorrecta(i);
+            if(teclado(name) && palabraSecreta.includes(name)) {
+                for(let i = 0; i < palabraSecreta.length; i++) {
+                    if(palabraSecreta[i] === name) {
+                        dibujarLetraCorrecta(i);
+                    }
                 }
+            } else {
+                dibujarLetraIncorrecta(name,errores);
+                agregarError(name)
             }
-        } else {
-            dibujarLetraIncorrecta(name,errores);
-            agregarError(name)
-        }
+        
+        
     }
 }
 
 function agregarError() {
     errores -= 1;
+    if(errores <= 0){
+        errores = 8;
+    }  
+    if(errores == 7){
+        dibujarTronco();
+    }
+    if(errores == 6){
+        dibujarTecho();
+    }
+    if(errores == 5){
+        dibujarCuerda();
+    }
+    if(errores == 4){
+        dibujarCabeza();
+    }
+    if(errores == 3){
+        dibujarCuerpo();
+    }
+    if(errores == 2){
+        dibujarBrazos();
+    }
+    if(errores == 1){
+        dibujarPiernas();
+    }
+    if(errores == 0){
+        dibujarMuerte();
+    }
     console.log(errores);
 }
 
