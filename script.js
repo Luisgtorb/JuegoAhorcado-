@@ -79,28 +79,27 @@ function teclado(key) {
 
 function acierto() {
     
-    document.onkeydown = (event) => {
-        var name = event.key.toUpperCase();
+    document.onkeypress = (event) => {
+        if(!/^[a-zA-ZñÑ\s] + $/.test(event.key)) {
+            var name = event.key.toUpperCase();
             if(teclado(name) && palabraSecreta.includes(name)) {
                 for(let i = 0; i < palabraSecreta.length; i++) {
                     if(palabraSecreta[i] === name) {
                         dibujarLetraCorrecta(i);
                     }
                 }
-            } else {
+            } else{
                 dibujarLetraIncorrecta(name,errores);
-                agregarError(name)
+                agregarError(name);
             }
-        
+             return;
+        }
         
     }
 }
 
 function agregarError() {
     errores -= 1;
-    if(errores <= 0){
-        errores = 8;
-    }  
     if(errores == 7){
         dibujarTronco();
     }
@@ -123,7 +122,9 @@ function agregarError() {
         dibujarPiernas();
     }
     if(errores == 0){
+        errores = 8;
         dibujarMuerte();
+        mensajePerdedor("¡Haz Perdido!", "No Haz Completado","La Palabra Secreta");
     }
     console.log(errores);
 }
@@ -133,6 +134,7 @@ function btnNuevoJuego() {
     dibujarCanvas();
     dibujarGuion(198);
     acierto();
+    errores = 8;
 }
 
 function btnDesistir() {
@@ -148,6 +150,7 @@ function btnNuevaPalabra() {
     agregarPalabra.value = "";
     agregarJuego();
     dibujarGuion(198);
+    acierto();
     console.log(palabras);
 }
 

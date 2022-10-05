@@ -112,5 +112,28 @@ function dibujarMuerte(){
     pincel.beginPath();
     pincel.arc(410,179,35,0,3.15*2)
     pincel.fill();
+}
 
+function mensajeGanador(texto1,texto2,texto3) {
+    pincel.fillStyle = "#518169";   
+    pincel.font = "20px Times New Roman";
+    pincel.fillText(texto1, 550, 200);
+    pincel.fillStyle = "#518169";
+    pincel.font = "20px Times New Roman";
+    pincel.fillText(texto2, 550, 220);
+    pincel.fillStyle = "#518169";
+    pincel.font = "20px Times New Roman";
+    pincel.fillText(texto3, 550, 240);
+}
+
+function mensajePerdedor(texto1,texto2,texto3) {
+    pincel.fillStyle = "#ff6f69";   
+    pincel.font = "20px Times New Roman";
+    pincel.fillText(texto1, 550, 200);
+    pincel.fillStyle = "#ff6f69";
+    pincel.font = "20px Times New Roman";
+    pincel.fillText(texto2, 550, 220);
+    pincel.fillStyle = "#ff6f69";
+    pincel.font = "20px Times New Roman";
+    pincel.fillText(texto3, 550, 240);
 }
