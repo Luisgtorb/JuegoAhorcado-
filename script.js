@@ -4,6 +4,8 @@ var palabras = ["PLAYA", "FIESTA", "PISCINA", "VERANO", "CARRO", "YATE", "MUSICA
 var palabraSecreta = "";
 var caracter = [];
 var errores = 8;
+var numero = "0123456789"
+var teclas = "QWERTYUIOPASDFGHJKLZXCVBNM"
 var agregarPalabra = document.querySelector(".textarea");
 var pantalla = document.getElementById("pantalla");
 var pincel = pantalla.getContext("2d");
@@ -66,35 +68,25 @@ function escogerPalabraSecreta() {
     console.log(palabraSecreta);
 }
 
-function teclado(key) { 
-        if(key >= 65 && caracter.indexOf(key) || key <= 90 && caracter.indexOf(key)) {
-            caracter.push(key);
-            console.log(key);
-            return false       
-        } else {
-            console.log(key);
-            return true
-        }
-}
-
 function acierto() {
-    
     document.onkeypress = (event) => {
-        if(!/^[a-zA-ZñÑ\s] + $/.test(event.key)) {
+            var counter = 0;
             var name = event.key.toUpperCase();
-            if(teclado(name) && palabraSecreta.includes(name)) {
+            if(teclas.includes(name) && palabraSecreta.includes(name)) {
                 for(let i = 0; i < palabraSecreta.length; i++) {
-                    if(palabraSecreta[i] === name) {
+                    if(palabraSecreta[i] === name && counter < palabraSecreta.length) {
                         dibujarLetraCorrecta(i);
-                    }
+                        if(counter>=(palabraSecreta.length) ){
+                            mensajeGanador("¡Haz Ganado!", "Haz Completado","La Palabra Secreta");
+                        }
+                        
+                    }counter++;
                 }
-            } else{
+            } else if (teclas.includes(name)){
                 dibujarLetraIncorrecta(name,errores);
                 agregarError(name);
             }
-             return;
-        }
-        
+             
     }
 }
 
@@ -149,6 +141,7 @@ function btnNuevaPalabra() {
     document.getElementById("input-palabra").hidden=true;
     agregarPalabra.value = "";
     agregarJuego();
+    dibujarCanvas();
     dibujarGuion(198);
     acierto();
     console.log(palabras);
