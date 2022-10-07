@@ -2,7 +2,6 @@
 
 var palabras = ["PLAYA", "FIESTA", "PISCINA", "VERANO", "CARRO", "YATE", "MUSICA", "AGUA", "VIAJE", "PELOTA"];
 var palabraSecreta = "";
-var caracter = [];
 var errores = 8;
 var numero = "0123456789"
 var teclas = "QWERTYUIOPASDFGHJKLZXCVBNM"
@@ -76,7 +75,7 @@ function acierto() {
                 for(let i = 0; i < palabraSecreta.length; i++) {
                     if(palabraSecreta[i] === name && counter < palabraSecreta.length) {
                         dibujarLetraCorrecta(i);
-                        if(counter>=(palabraSecreta.length) ){
+                        if(counter>=(palabraSecreta.length -1) ){
                             mensajeGanador("¡Haz Ganado!", "Haz Completado","La Palabra Secreta");
                         }
                         
